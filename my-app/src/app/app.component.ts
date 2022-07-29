@@ -5,7 +5,7 @@ import { DogBreedDropdownComponent } from './components/dropdown/dog-breed-dropd
 @Component({
   selector: 'app-root',
   // tag used to embed component
-  templateUrl: './app.component.html',
+  template:`<app-body></app-body>`,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {

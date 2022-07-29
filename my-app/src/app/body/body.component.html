@@ -4,7 +4,7 @@
     <p>{{message2}}</p>
 
 </div>
-<div class="flex">
+<div >
   <div class="grow p-20">
     <form>
       <label class="block">
@@ -15,19 +15,19 @@
     </form>
     <p class="my-5 text-slate-500 subHeading">chose from</p>
     <div>
-    <!-- <app-dog-breed-dropdown (messageEvent1)="receiveMessage1($event)"></app-dog-breed-dropdown> -->
+    <app-dog-breed-dropdown (messageEvent1)="receiveMessage1($event)"></app-dog-breed-dropdown>
     </div>
     <p class="text-slate-500 my-5 subHeading">Options</p>
     <div class="my-5">
    <!-- <app-breed-options-modal></app-breed-options-modal> -->
     </div>
 
-    <!-- <app-view-images-button (messageEvent2)="receiveMessage2($event)"></app-view-images-button> -->
+    <app-view-images-button (messageEvent2)="receiveMessage2($event)"></app-view-images-button>
   </div>
   <div>
-    <!-- <div *ngFor="let dog of dogs">
-      <button (click)="sendMessage(dog)" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{{dog}}</button>
-    </div> -->
+    <div class="imageGallery" *ngFor="let dog1 of dogs1">
+      <img [src]="dog1"/>
+    </div>
   </div>
 </div>
 

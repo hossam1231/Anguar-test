@@ -30,7 +30,11 @@ export class DogService {
       );
   }
 
-  getDog(url:any): Observable<Dog[]> {
+
+
+
+  getDog(message1:string): Observable<Dog[]> {
+   let url = "https://dog.ceo/api/breed/" + message1 + "/images";
     return this.http.get<Dog[]>(url)
       .pipe(
         tap(_ => this.log('fetched dog')),

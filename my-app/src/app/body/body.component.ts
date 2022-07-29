@@ -7,9 +7,7 @@ import { DogService } from '../dog.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements AfterViewInit {
-  showDiv = {
-   dropdown: false,
-  }
+
 
 @ViewChild(DogBreedDropdownComponent) child : any  ;
 
@@ -28,12 +26,12 @@ sendMessage(message:any) {
 this.message = this.child.message;
   }
 
-  message : string = "default";
+  message!: string;
 
-  message1 : string = "default";
+  message1! : string
   // breed
 
-  message2 : string = "default";
+  message2! : string
   // pressed
 
 
@@ -41,21 +39,6 @@ this.message = this.child.message;
   receiveMessage($event: any) {
     this.message = $event;
     this.sendMessage(this.message)
-  }
-
-  url: string = "https://dog.ceo/api/breed/" + this.message1 + "/images/random";
-
-  getDog(): void {
-    console.log("get dog")
-    this.dogService.getDog(this.url)
-    .subscribe((response:any[]) => {
-     // @ts-ignore
-     console.log(response.message);
-       // @ts-ignore
-    const DogArray = Object.keys(response.message);
-    // @ts-ignore
-     this.dogs1 = DogArray
-    });
   }
 
 
@@ -67,9 +50,21 @@ this.message = this.child.message;
 
   receiveMessage2($event: any) {
     this.message2 = $event;
-    this.sendMessage(this.message)
+    this.getDog();
   }
 
-
+  // @ts-ignore
+  getDog(): void {
+    console.log("get dog")
+    this.dogService.getDog(this.message1)
+    .subscribe((response:any[]) => {
+     // @ts-ignore
+     console.log(response);
+       // @ts-ignore
+    const DogArray = Object.keys(response.message[0]);
+    // @ts-ignore
+     this.dogs1 = DogArray
+    });
+  }
 
 }

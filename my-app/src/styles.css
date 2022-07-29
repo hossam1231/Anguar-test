@@ -38,6 +38,12 @@ header {
   place-self: center;
 }
 
+.imageGallery{
+  display:'flex',;
+  flex-wrap:  wrap;
+  justify-content: spacce-around;
+}
+
 .headerContainer {
   justify-content: center;
   align-items: center;
