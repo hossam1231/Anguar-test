@@ -25,11 +25,42 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- <app-dogs></app-dogs> -->
-<!-- <app-body>
+<app-body>
 
-</app-body> -->
+</app-body>
 
-<p>hi</p>
+
+
+  <div class="headerContainer">
+    <app-header></app-header>
+    <!-- <p>{{message}}</p> -->
+  </div>
+  <div class="flex">
+    <div class="grow p-20">
+      <form>
+        <label class="block">
+          <!-- Using form state modifers, the classes can be identical for every input -->
+          <input type="text" value="Search breeds" disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
+        </label>
+        <!-- ... -->
+      </form>
+      <p class="my-5 text-slate-500 subHeading">chose from</p>
+      <div>
+      <app-dog-breed-dropdown (messageEvent)="receiveMessage($event)"></app-dog-breed-dropdown>
+      </div>
+      <p class="text-slate-500 my-5 subHeading">Options</p>
+      <div class="my-5">
+     <app-breed-options-modal></app-breed-options-modal>
+      </div>
+
+      <app-view-images-button></app-view-images-button>
+    </div>
+    <div class="grow h-14">
+
+    </div>
+  </div>
+
+
 
 
 

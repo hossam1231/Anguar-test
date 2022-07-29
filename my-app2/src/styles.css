@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* imports*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  height:10vh;
+}
+
+.subHeading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+.subTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.container{
+  display: grid;
+  width: 100vw;
+  height: 90vh;
+}
+
+.centerC {
+  place-self: center;
+}
+
+.headerContainer {
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
