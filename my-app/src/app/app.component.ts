@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, AfterViewInit, ViewChild,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  // tag used to embed component
+  template:`
+
+
+  `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'my-app';
+export class AppComponent implements OnInit {
+
+
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+
+
 }
