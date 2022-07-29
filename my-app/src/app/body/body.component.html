@@ -33,17 +33,15 @@
   </div>
 <div class="my-5" >
 <app-view-images-button (messageEvent2)="receiveMessage2($event)"></app-view-images-button>
-
 </div>
-</div>
-
-  </div>
+<div class="imageGallery" *ngFor="let dog1 of dogs1">
   <div>
-    <div class="imageGallery" *ngFor="let dog1 of dogs1">
-      <img [src]="dog1"/>
-      <p>{{dog1}}</p>
-    </div>
+     <img class="object-cover h-48 w-96"[src]="dog1"/>
   </div>
+
+</div>
+
+
 </div>
 
 
