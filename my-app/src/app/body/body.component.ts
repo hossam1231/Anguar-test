@@ -61,7 +61,7 @@ this.message = this.child.message;
      // @ts-ignore
      console.log(response);
        // @ts-ignore
-    const DogArray = Object.keys(response.message[0]);
+    const DogArray = Object.keys(response.message);
     // @ts-ignore
      this.dogs1 = DogArray
     });
