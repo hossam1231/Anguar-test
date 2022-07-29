@@ -14,7 +14,7 @@ body {
 header {
   padding: 20px;
   text-align: center;
-  height:10vh;
+  height:100px;
 }
 
 .subHeading {
@@ -34,16 +34,25 @@ header {
   height: 90vh;
 }
 
+.taCenter {
+  text-align: center;
+}
+
 .centerC {
   place-self: center;
 }
 
-.imageGallery{
-  display:'flex';
-  flex-wrap:wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  margin:20px;
+.imageExpand{
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+  margin:5px;
 }
 
 .headerContainer {

@@ -12,6 +12,10 @@ export class BodyComponent implements AfterViewInit {
 @ViewChild(DogBreedDropdownComponent) child : any  ;
 
 @Output() messageEvent1 = new EventEmitter<string>();
+showDiv = {
+  image: false,
+ }
+
 
 dogs1: any = [];
 dogsSub: any = [];
@@ -81,9 +85,13 @@ this.counter = this.counter - 1;
     });
   }
 
+expandImage(){
+  console.log("hi")
+}
+
   getDogSubBreed(): void {
     console.log("get dog")
-    this.dogService.getDogSubBreed(this.message1,)
+    this.dogService.getDogSubBreed(this.message1)
     .subscribe((response:any[]) => {
      // @ts-ignore
      console.log(response);
@@ -95,6 +103,7 @@ this.counter = this.counter - 1;
   }
 
   addSubBreed(dog:any){
+        // @ts-ignore
 this.message1=this.message1+"/"+dog;
 console.log(this.message1)
   }
