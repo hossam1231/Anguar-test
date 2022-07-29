@@ -33,14 +33,23 @@ export class DogService {
 
 
 
-  getDog(message1:string): Observable<Dog[]> {
-   let url = "https://dog.ceo/api/breed/" + message1 + "/images";
+  getDog(message1:string,counter:number): Observable<Dog[]> {
+   let url = "https://dog.ceo/api/breed/" + message1 + "/images/random/" + String(counter) ;
     return this.http.get<Dog[]>(url)
       .pipe(
         tap(_ => this.log('fetched dog')),
         catchError(this.handleError<Dog[]>('getDog', []))
       );
   }
+
+  getDogSubBreed(message1:string): Observable<Dog[]> {
+    let url = "https://dog.ceo/api/breed/" + message1 + "/list";
+     return this.http.get<Dog[]>(url)
+       .pipe(
+         tap(_ => this.log('fetched dog')),
+         catchError(this.handleError<Dog[]>('getDog', []))
+       );
+   }
 
 
   private handleError<T>(operation = 'operation', result?: T) {

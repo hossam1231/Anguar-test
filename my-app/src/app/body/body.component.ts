@@ -14,6 +14,9 @@ export class BodyComponent implements AfterViewInit {
 @Output() messageEvent1 = new EventEmitter<string>();
 
 dogs1: any = [];
+dogsSub: any = [];
+
+
 
 sendMessage(message:any) {
   console.log("message sent");
@@ -34,7 +37,7 @@ this.message = this.child.message;
   message2! : string
   // pressed
 
-
+counter: number = 0;
 
   receiveMessage($event: any) {
     this.message = $event;
@@ -44,7 +47,7 @@ this.message = this.child.message;
 
   receiveMessage1($event: any) {
     this.message1 = $event;
-    this.getDog();
+    this.getDogSubBreed();
 
   }
 
@@ -53,10 +56,21 @@ this.message = this.child.message;
     this.getDog();
   }
 
+incrementCounter() {
+this.counter = this.counter + 1;
+}
+
+decrementCounter() {
+  if (this.counter > 0){
+this.counter = this.counter - 1;
+  }
+}
+
+
   // @ts-ignore
   getDog(): void {
     console.log("get dog")
-    this.dogService.getDog(this.message1)
+    this.dogService.getDog(this.message1,this.counter)
     .subscribe((response:any[]) => {
      // @ts-ignore
      console.log(response);
@@ -66,5 +80,25 @@ this.message = this.child.message;
      this.dogs1 = DogArray
     });
   }
+
+  getDogSubBreed(): void {
+    console.log("get dog")
+    this.dogService.getDogSubBreed(this.message1,)
+    .subscribe((response:any[]) => {
+     // @ts-ignore
+     console.log(response);
+       // @ts-ignore
+    const DogArray = Object.keys(response.message);
+    // @ts-ignore
+     this.dogsSub = DogArray
+    });
+  }
+
+  addSubBreed(dog:any){
+this.message1=this.message1+"/"+dog;
+console.log(this.message1)
+  }
+
+
 
 }

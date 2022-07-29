@@ -7,7 +7,6 @@ import { DogBreedDropdownComponent } from './components/dropdown/dog-breed-dropd
 import { DogsComponent } from './dogs/dogs.component';
 import { ViewImagesButtonComponent } from './components/button/view-images-button/view-images-button.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BreedOptionsModalComponent } from './components/modal/breed-options-modal/breed-options-modal.component';
 import { BodyComponent } from './body/body.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { BodyComponent } from './body/body.component';
     DogsComponent,
     ViewImagesButtonComponent,
     HeaderComponent,
-    BreedOptionsModalComponent,
     BodyComponent,
   ],
   imports: [
