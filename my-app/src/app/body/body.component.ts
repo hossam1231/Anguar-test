@@ -75,7 +75,7 @@ this.counter = this.counter - 1;
      // @ts-ignore
      console.log(response);
        // @ts-ignore
-    const DogArray = Object.keys(response.message);
+    const DogArray = Object(response.message);
     // @ts-ignore
      this.dogs1 = DogArray
     });
@@ -88,7 +88,7 @@ this.counter = this.counter - 1;
      // @ts-ignore
      console.log(response);
        // @ts-ignore
-    const DogArray = Object.keys(response.message);
+    const DogArray = Object(response.message);
     // @ts-ignore
      this.dogsSub = DogArray
     });
