@@ -8,7 +8,8 @@ import { DogsComponent } from './dogs/dogs.component';
 import { ViewImagesButtonComponent } from './components/button/view-images-button/view-images-button.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './body/body.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +20,11 @@ import { BodyComponent } from './body/body.component';
     BodyComponent,
   ],
   imports: [
+    MatListModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

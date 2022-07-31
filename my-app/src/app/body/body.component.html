@@ -1,63 +1,84 @@
 <div class="headerContainer">
   <app-header></app-header>
-    <!-- <p>{{message1}}</p>
+  <!-- <p>{{message1}}</p>
     <p>{{message2}}</p> -->
-
 </div>
-<div >
-  <div class="grow p-20">
 
-    <p class="my-5 text-slate-500 subHeading">chose from</p>
+<div class="grow p-20">
+  <p class="my-5 text-slate-500 subHeading">chose from</p>
+  <div>
+    <app-dog-breed-dropdown
+      (messageEvent1)="receiveMessage1($event)"
+    ></app-dog-breed-dropdown>
+  </div>
+  <p class="text-slate-500 my-5 subHeading">Options</p>
+  <div class="my-5">
     <div>
-    <app-dog-breed-dropdown (messageEvent1)="receiveMessage1($event)"></app-dog-breed-dropdown>
+      <div class="imageGallery" *ngFor="let dog of dogsSub">
+        <button
+          class="rounded-full p-2 text-white bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+          (click)="addSubBreed(dog)"
+        >
+          {{ dog }}
+        </button>
+      </div>
     </div>
-    <p class="text-slate-500 my-5 subHeading">Options</p>
-    <div class="my-5">
-      <div>
-        <div class="imageGallery" *ngFor="let dog of dogsSub">
-          <button class="rounded-full p-2 text-white bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300" (click)="addSubBreed(dog)">{{dog}}</button>
+  </div>
+  <div class="flex">
+    <div>
+      <label
+        for="custom-input-number"
+        class="w-full text-gray-700 text-sm font-semibold"
+        >Image limit</label
+      >
+      <div
+        class="align-center justify-center flex flex-row h-10 w-full rounded-lg bg-transparent mt-1"
+      >
+        <button
+          (click)="decrementCounter()"
+          data-action="decrement"
+          class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+        >
+          <span (click)="decrementCounter()" class="m-auto text-2xl font-thin"
+            >−</span
+          >
+        </button>
+        <div
+          class="taCenter p-2 bg-gray-300 text-gray-600 h-full w-20 cursor-pointer"
+        >
+          <p>{{ counter }}</p>
         </div>
+        <button
+          (click)="incrementCounter()"
+          data-action="increment"
+          class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+        >
+          <span (click)="incrementCounter()" class="m-auto text-2xl font-thin"
+            >+</span
+          >
+        </button>
       </div>
-    </div>
-<div class="flex">
-  <div class="custom-number-input h-10 w-32">
-    <label for="custom-input-number" class="w-full text-gray-700 text-sm font-semibold">Image limit</label>
-    <div class="align-center justify-center flex flex-row h-10 w-full rounded-lg bg-transparent mt-1">
-      <button (click)="decrementCounter()" data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-        <span (click)="decrementCounter()" class="m-auto text-2xl font-thin">−</span>
-      </button>
-
-      <div class="taCenter p-2 bg-gray-300 text-gray-600 h-full w-20 cursor-pointer">
- <p>{{counter}}</p>
-
+      <div class="my-5">
+        <app-view-images-button
+          (messageEvent2)="receiveMessage2($event)"
+        ></app-view-images-button>
       </div>
 
+      <!-- <div class="flex-row grow flex space-between">
+        <div class="m-10 grow h-100 w-100" *ngFor="let dog1 of dogs1">
+          <img width="100" height="100" (click)="expandImage()" [src]="dog1" />
+        </div>
+      </div> -->
 
-    <button (click)="incrementCounter()"  data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-      <span (click)="incrementCounter()" class="m-auto text-2xl font-thin">+</span>
-    </button>
-  </div>
-<div class="my-5" >
-<app-view-images-button (messageEvent2)="receiveMessage2($event)"></app-view-images-button>
-</div>
+      <span class="grow flex imageGallery">
+        <img *ngFor="let dog1 of dogs1" (click)="expandImage()" [src]="dog1" />
+      </span>
 
-<div class="flex-row grow flex space-between">
-  <div class="m-10 grow h-100 w-100" *ngFor="let dog1 of dogs1">
-    <img (click)='expandImage()' class="h-100 w-100" [src]="dog1"/>
-  </div>
-</div>
+      <!-- <div *ngIf="showDiv.image">
+        <div class="imageExpand" role="none">
 
-
-  <!-- <div *ngIf="showDiv.image">
-    <div class="imageExpand" role="none">
-
+          </div>
+        </div> -->
     </div>
-  </div> -->
-
-
-
-
+  </div>
 </div>
-
-
-
