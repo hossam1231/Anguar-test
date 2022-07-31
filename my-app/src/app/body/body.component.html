@@ -24,19 +24,14 @@
     <div class="flex">
       <button
         *ngFor="let dog of dogsSub"
-        [ngStyle]="{
-          'focus:outline-none focus:ring focus:ring-violet-300':
-            subBreed === 'dog'
+        [ngClass]="{
+          'outline-none ring ring-violet-300': subBreed === dog
         }"
         class="rounded-full px-5 py-2 mr-5 text-white bg-violet-500 hover:bg-violet-600"
         (click)="addSubBreed(dog)"
       >
         {{ dog }}
       </button>
-      <div *ngIf="subBreed">
-        <p class="text-slate-500 my-5 subHeading">Sub breed</p>
-        <p class="text-slate-300 my-5 subtitle">SELECTED</p>
-      </div>
     </div>
   </div>
 
@@ -57,11 +52,15 @@
             >−</span
           >
         </button>
-        <div
+
+        <input
           class="taCenter p-2 bg-gray-300 text-gray-600 h-full w-20 cursor-pointer"
-        >
-          <p>{{ counter }}</p>
-        </div>
+          matInput
+          #postalCode
+          type="text"
+          [(ngModel)]="counter"
+        />
+
         <button
           (click)="incrementCounter()"
           data-action="increment"

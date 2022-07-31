@@ -51,6 +51,8 @@ export class BodyComponent implements AfterViewInit {
 
   counter: number = 0;
 
+  value = this.counter;
+
   receiveMessage($event: any) {
     this.message = $event;
     this.sendMessage(this.message);
@@ -70,12 +72,12 @@ export class BodyComponent implements AfterViewInit {
   }
 
   incrementCounter() {
-    this.counter = this.counter + 1;
+    this.counter++;
   }
 
   decrementCounter() {
     if (this.counter > 0) {
-      this.counter = this.counter - 1;
+      this.counter--;
     }
   }
 
