@@ -34,6 +34,10 @@ export class DogBreedDropdownComponent implements AfterViewInit {
 
   message: string = 'default';
 
+  close() {
+    this.showDiv.dropdown = false;
+  }
+
   receiveMessage($event: any) {
     this.message = $event;
     this.sendMessage(this.message);
