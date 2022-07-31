@@ -52,8 +52,9 @@ header {
 .imageGallery {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 150px);
+  grid-template-rows: repeat(6, 1fr);
   gap: 20px;
+  row-gap: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -63,7 +64,6 @@ img {
   height: 200px;
   border-radius: 50%;
   fits: cover;
-  marign: 5px;
 }
 
 .headerContainer {

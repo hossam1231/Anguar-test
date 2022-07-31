@@ -13,27 +13,24 @@
   </div>
   <p class="text-slate-500 my-5 subHeading">Options</p>
   <div class="my-5">
-    <div>
-      <div class="imageGallery" *ngFor="let dog of dogsSub">
-        <button
-          class="rounded-full p-2 text-white bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
-          (click)="addSubBreed(dog)"
-        >
-          {{ dog }}
-        </button>
-      </div>
+    <div class="imageGallery" *ngFor="let dog of dogsSub">
+      <button
+        class="rounded-full p-2 text-white bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+        (click)="addSubBreed(dog)"
+      >
+        {{ dog }}
+      </button>
     </div>
   </div>
-  <div class="flex">
+
+  <div>
     <div>
       <label
         for="custom-input-number"
         class="w-full text-gray-700 text-sm font-semibold"
         >Image limit</label
       >
-      <div
-        class="align-center justify-center flex flex-row h-10 w-full rounded-lg bg-transparent mt-1"
-      >
+      <div class="align-center flex flex-row h-10 w-full mt-1">
         <button
           (click)="decrementCounter()"
           data-action="decrement"
@@ -58,27 +55,15 @@
           >
         </button>
       </div>
-      <div class="my-5">
+
+      <div class="p-40">
         <app-view-images-button
           (messageEvent2)="receiveMessage2($event)"
         ></app-view-images-button>
       </div>
-
-      <!-- <div class="flex-row grow flex space-between">
-        <div class="m-10 grow h-100 w-100" *ngFor="let dog1 of dogs1">
-          <img width="100" height="100" (click)="expandImage()" [src]="dog1" />
-        </div>
-      </div> -->
-
-      <span class="grow flex imageGallery">
-        <img *ngFor="let dog1 of dogs1" (click)="expandImage()" [src]="dog1" />
-      </span>
-
-      <!-- <div *ngIf="showDiv.image">
-        <div class="imageExpand" role="none">
-
-          </div>
-        </div> -->
+    </div>
+    <div class="grow flex imageGallery">
+      <img *ngFor="let dog1 of dogs1" (click)="expandImage()" [src]="dog1" />
     </div>
   </div>
 </div>
