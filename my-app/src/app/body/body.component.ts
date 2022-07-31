@@ -20,6 +20,8 @@ export class BodyComponent implements AfterViewInit {
   @Output() messageEvent1 = new EventEmitter<string>();
   showDiv = {
     image: false,
+    expandedImage: false,
+    expandedImageData: '',
   };
 
   dogs1: any = [];
@@ -44,6 +46,9 @@ export class BodyComponent implements AfterViewInit {
   message2!: string;
   // pressed
 
+  subBreed!: string;
+  breed!: string;
+
   counter: number = 0;
 
   receiveMessage($event: any) {
@@ -53,7 +58,10 @@ export class BodyComponent implements AfterViewInit {
 
   receiveMessage1($event: any) {
     this.message1 = $event;
+    this.breed = this.message1;
+    this.subBreed = '';
     this.getDogSubBreed();
+    this.dogs1 = [];
   }
 
   receiveMessage2($event: any) {
@@ -71,11 +79,15 @@ export class BodyComponent implements AfterViewInit {
     }
   }
 
+  closeModal() {
+    this.showDiv.expandedImage = false;
+  }
+
   // @ts-ignore
   getDog(): void {
     console.log('get dog');
     this.dogService
-      .getDog(this.message1, this.counter)
+      .getDog(this.breed, this.counter, this.subBreed)
       .subscribe((response: any[]) => {
         // @ts-ignore
         console.log(response);
@@ -86,27 +98,31 @@ export class BodyComponent implements AfterViewInit {
       });
   }
 
-  expandImage() {
+  expandImage(dog1: string) {
     console.log('hi');
+    this.showDiv.expandedImageData = dog1;
+    this.showDiv.expandedImage = true;
   }
 
   getDogSubBreed(): void {
     console.log('get dog');
-    this.dogService
-      .getDogSubBreed(this.message1)
-      .subscribe((response: any[]) => {
-        // @ts-ignore
-        console.log(response);
-        // @ts-ignore
-        const DogArray = response.message;
-        // @ts-ignore
-        this.dogsSub = DogArray;
-      });
+    this.dogService.getDogSubBreed(this.breed).subscribe((response: any[]) => {
+      // @ts-ignore
+      console.log(response);
+      // @ts-ignore
+      const DogArray = response.message;
+      // @ts-ignore
+      this.dogsSub = DogArray;
+    });
   }
 
-  addSubBreed(dog: any) {
+  addSubBreed(dog: string) {
     // @ts-ignore
-    this.message1 = this.message1 + '/' + dog;
-    console.log(this.message1);
+    if (this.subBreed != dog) {
+      this.subBreed = dog;
+      console.log('subBreed: ' + this.subBreed);
+    } else {
+      this.subBreed = '';
+    }
   }
 }

@@ -1,0 +1,33 @@
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.fill img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.dogImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+svg {
+  color: white;
+}
+
+.cross {
+  position: fixed;
+  border-radius: 5px;
+  right: 0;
+  top: 0;
+  padding: 10px;
+}
+
+.dogImage:hover {
+  transform: scale(1.1);
+}

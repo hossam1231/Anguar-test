@@ -5,21 +5,38 @@
 </div>
 
 <div class="grow p-20">
-  <p class="my-5 text-slate-500 subHeading">chose from</p>
-  <div>
+  <label
+    for="custom-input-number"
+    class="w-full text-gray-700 text-sm font-semibold py-10"
+    >Chose from</label
+  >
+  <div class="my-10">
     <app-dog-breed-dropdown
       (messageEvent1)="receiveMessage1($event)"
     ></app-dog-breed-dropdown>
   </div>
-  <p class="text-slate-500 my-5 subHeading">Options</p>
+  <label
+    for="custom-input-number"
+    class="w-full text-gray-700 text-sm font-semibold py-10"
+    >Options</label
+  >
   <div class="my-5">
-    <div class="imageGallery" *ngFor="let dog of dogsSub">
+    <div class="flex">
       <button
-        class="rounded-full p-2 text-white bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+        *ngFor="let dog of dogsSub"
+        [ngStyle]="{
+          'focus:outline-none focus:ring focus:ring-violet-300':
+            subBreed === 'dog'
+        }"
+        class="rounded-full px-5 py-2 mr-5 text-white bg-violet-500 hover:bg-violet-600"
         (click)="addSubBreed(dog)"
       >
         {{ dog }}
       </button>
+      <div *ngIf="subBreed">
+        <p class="text-slate-500 my-5 subHeading">Sub breed</p>
+        <p class="text-slate-300 my-5 subtitle">SELECTED</p>
+      </div>
     </div>
   </div>
 
@@ -56,14 +73,67 @@
         </button>
       </div>
 
-      <div class="p-40">
+      <div class="px-40 py-10">
         <app-view-images-button
           (messageEvent2)="receiveMessage2($event)"
         ></app-view-images-button>
       </div>
     </div>
     <div class="grow flex imageGallery">
-      <img *ngFor="let dog1 of dogs1" (click)="expandImage()" [src]="dog1" />
+      <img
+        class="dogImage"
+        *ngFor="let dog1 of dogs1"
+        (click)="expandImage(dog1)"
+        [src]="dog1"
+      />
+    </div>
+    <div *ngIf="showDiv.expandedImage">
+      <!-- h -->
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div
+        class="relative z-10"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+
+        <div class="fixed z-10 inset-0 overflow-y-auto">
+          <div
+            class="flex items-center justify-center min-h-full p-4 text-center sm:p-0"
+          >
+            <div
+              class="fill relative bg-white items-center justify-center rounded-lg overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full"
+            >
+              <div class="cross backdrop-blur-sm bg-white/30">
+                <svg
+                  (click)="closeModal()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+
+              <img
+                class="fill"
+                [src]="this.showDiv.expandedImageData"
+                alt=" 'a' + this.breed + this.subBreed+ 'dog'"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- h -->
     </div>
   </div>
 </div>
