@@ -28,6 +28,25 @@ export class DogService {
     );
   }
 
+  getDogNumber(breed: string, subBreed: string): Observable<Dog[]> {
+    if (subBreed) {
+      let url =
+        'https://dog.ceo/api/breed/' + breed + '/' + subBreed + '/images';
+      console.log(url);
+      return this.http.get<Dog[]>(url).pipe(
+        tap((_) => this.log('fetched dog')),
+        catchError(this.handleError<Dog[]>('getDog', []))
+      );
+    } else {
+      let url = 'https://dog.ceo/api/breed/' + breed + '/images';
+      console.log(url);
+      return this.http.get<Dog[]>(url).pipe(
+        tap((_) => this.log('fetched dog')),
+        catchError(this.handleError<Dog[]>('getDog', []))
+      );
+    }
+  }
+
   getDog(breed: string, counter: number, subBreed: string): Observable<Dog[]> {
     if (subBreed) {
       let url =
